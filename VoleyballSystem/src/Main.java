@@ -1,5 +1,4 @@
 import control.UsuarioController;
-import modelo.Usuario;
 import vista.VistaUsuario;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -11,13 +10,6 @@ public class Main {
 
         String nombre = vista.pedirNombre();
         String clave = vista.pedirContraseña();
-
-        Usuario usuario = controller.login(nombre, clave);
-        if (usuario != null) {
-            vista.mostrarMensaje("Bienvenido " + usuario.getNombre());
-        } else {
-            vista.mostrarMensaje("Nombre o contraseña incorrecta");
-        }
     }
 }
 

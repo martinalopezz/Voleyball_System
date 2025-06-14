@@ -1,8 +1,5 @@
 package control;
 
-import modelo.Administrador;
-import modelo.Usuario;
-import modelo.UsuarioComun;
 import util.Seguridad;
 
 import java.util.ArrayList;
