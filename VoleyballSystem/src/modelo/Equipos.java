@@ -1,6 +1,6 @@
 package modelo;
 
-public class Equipo {
+public class Equipos {
     public class Equipo {
         private String nombre;
 
