@@ -31,4 +31,14 @@ public class Equipo {
     public Capitana getCapitana() { return capitana; }
 
     public void setCapitana(Capitana capitana) { this.capitana = capitana; }
+
+    @Override
+    public String toString() {
+        return id_equipo + " - " + nombre +
+                " (Entrenador: " + entrenador +
+                ", Capitana: " + capitana + ")";
+    }
+
+
+
 }

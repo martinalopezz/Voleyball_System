@@ -1,6 +1,8 @@
 package Vista;
 
+import Modelo.Cancha;
 import Modelo.Equipo;
+import Modelo.Partido;
 
 import java.util.Scanner;
 import java.util.Set;
@@ -72,4 +74,15 @@ public class VistaGeneral {
         System.out.println("Entrenador: " + equipo.getEntrenador());
         System.out.println("Capitana: " + equipo.getCapitana());
     }
+
+    public void mostrarMensaje(String Dato) {
+        System.out.println(Dato);
+    }
+
+    public void mostrarPartido(Partido partido) {
+        System.out.println(partido.toString());
+    }
+
+
+
 }

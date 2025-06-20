@@ -8,7 +8,7 @@ public class Arbitro {
     public Arbitro() {
     }
 
-    public Arbitro(int id_arbitro, String nombre, String apellido) {
+    public Arbitro(String nombre, String apellido) {
         this.id_arbitro = id_arbitro;
         this.nombre = nombre;
         this.apellido = apellido;

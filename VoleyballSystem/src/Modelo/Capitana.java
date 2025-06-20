@@ -31,9 +31,6 @@ public class Capitana {
 
     @Override
     public String toString() {
-        return "Capitana{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                '}';
+        return nombre + " " + apellido;
     }
 }

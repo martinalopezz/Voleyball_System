@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9dbbfb-dd7a-4cd7-b7ef-88ca38e1f854" name="Changes" comment="" />
+    <list default="true" id="5c9dbbfb-dd7a-4cd7-b7ef-88ca38e1f854" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Controlador/ControladorGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/Controlador/ControladorGeneral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vista/Vista.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "martinalopezz"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/martinalopezz/Voleyball_System.git",
+    "accountId": "baf6bb6a-36dd-4f60-a3bf-4c1ca7bb58e7"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2ydgDRJ9s1j0QsPUnywmzBYXsog" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -19,6 +37,8 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "desarrollo__martina",
     "last_opened_file_path": "C:/Users/Usuario/Documents/2.Programacion 2/VoleyballSystem/VoleyballSystem/src"
   }
 }]]></component>

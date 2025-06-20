@@ -1,16 +1,25 @@
 package Controlador;
 
 import Modelo.*;
+import Modelo.Equipo;
+import Modelo.Cancha;
+import Modelo.Categoria;
+import Modelo.Partido;
+import Vista.VistaGeneral;
+
 import Vista.VistaGeneral;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class ControladorGeneral {
     private VistaGeneral vista;
     private Set<Equipo> listaEquipos;
     private Set<Cancha> listaCancha;
     private Set<Categoria> listaCategoria;
+    private Set<Partido> listaPartidos;
+
 
 
     public void instanciaObjetos() {
@@ -47,13 +56,13 @@ public class ControladorGeneral {
                 case 4:
                     registrarEquipo();
                     break;
-                /*case 5:
+                case 5:
                     mostrarequipos();
                     break;
                 case 6:
                     registrarPartido();
                     break;
-                case 7:
+                /*case 7:
                     resultadosPartidos();
                     break;
                 case 8:
@@ -105,12 +114,91 @@ public class ControladorGeneral {
         vista.mostrarEquipo(nuevoEquipo);
     }
 
+    private void mostrarequipos(){
+        if (listaEquipos.isEmpty()) {
+            vista.mostrarMensaje("No hay equipos registrados.");
+        } else {
+            vista.mostrarMensaje("🏐 Lista de equipos:");
+            for (Equipo equipo : listaEquipos) {
+                vista.mostrarEquipo(equipo);
+            }
+        }
+    }
+
+    private void registrarPartido(){
+        vista.mostrarMensaje("📋 Registrar Partido");
+
+
+        vista.mostrarLista("Equipos disponibles:", listaEquipos);
+        int idEquipo1 = vista.pedirEntero("ID del primer equipo:");
+        String nombreEquipo1 = vista.pedirString("Ingresa el nombre del equipo 1");
+        int idEquipo2 = vista.pedirEntero("ID del segundo equipo:");
+        String nombreEquipo2 = vista.pedirString("Ingresa el nombre del equipo 2");
+
+        String nombreArbitro = vista.pedirString("Ingrese el nombre del árbitro:");
+        String apellidoArbitro = vista.pedirString("Ingrese el apellido del árbitro:");
+
+        Arbitro arbitro = new Arbitro(nombreArbitro, apellidoArbitro);
+
+
+        if (idEquipo1 == idEquipo2) {
+            vista.mostrarMensaje(" Error, NO SE PUEDE REGISTRAR PARTIDO DEL MISMO EQUIPO , VOLVE A REGISTRARLO");
+            return;
+        }
+
+        Equipo equipo1 = buscarEquipoPorId(idEquipo1);
+        Equipo equipo2 = buscarEquipoPorId(idEquipo2);
+
+        if (equipo1 == null || equipo2 == null) {
+            vista.mostrarMensaje("Uno o ambos equipos no existen");
+        }
+
+        vista.mostrarLista("Canchas Disponibles: ", listaCancha);
+        String numeroCancha = vista.pedirString("Numero de la Cancha: ");
+        Cancha cancha = buscarCanchaPorNumero(numeroCancha);
+
+        if (cancha == null){
+            vista.mostrarMensaje("No se puedo encontrar la cancha");
+            return;
+        }
+
+        String fecha = vista.pedirString("Ingrese la fecha del partido (AAAA-MM-DD)(ej: 2025-06-21):");
+
+        Partido partido = new Partido(equipo1, equipo2, cancha, fecha, arbitro);
+        listaPartidos.add(partido);
+
+        vista.mostrarMensaje(" Partido registrado correctamente:");
+        vista.mostrarPartido(partido);
+
+    }
+
+    private Equipo buscarEquipoPorId(int id) {
+        for (Equipo equipo : listaEquipos) {
+            if (equipo.getId_equipo() == id) {
+                return equipo;
+            }
+        }
+        return null;
+    }
+
+    private Cancha buscarCanchaPorNumero(String numero) {
+        for (Cancha c : listaCancha) {
+            if (c.getNumeroCancha().equalsIgnoreCase(numero)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+
+
 
     public ControladorGeneral() {
         vista = new VistaGeneral();
         listaCancha = new HashSet<>();
         listaCategoria = new HashSet<>();
         listaEquipos = new HashSet<>();
+        listaPartidos = new HashSet<>();
     }
 
 }
