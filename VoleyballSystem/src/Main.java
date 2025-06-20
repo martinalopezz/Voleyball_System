@@ -1,8 +1,10 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import Controlador.ControladorGeneral;
+
 public class Main {
     public static void main(String[] args) {
-
+        ControladorGeneral controlador = new ControladorGeneral();
+        controlador.instanciaObjetos();
+        controlador.iniciar();
     }
 }
 
