@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aa15083b-3071-4988-892f-5500e99fc8f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Controlador/ControladorGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Controlador/ControladorGeneral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/Partido.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/Partido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/PuntosSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/PuntosSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/Reglamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/Reglamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/ResultadoPartidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/ResultadoPartidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/TablaPosiciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Modelo/TablaPosiciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VoleyballSystem/src/Vista/VistaGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/VoleyballSystem/src/Vista/VistaGeneral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VoleyballSystem.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VoleyballSystem/Controlador/ControladorGeneral.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoleyballSystem/Controlador/ControladorGeneral.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +31,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "desarrollo__priscila",
+    "git-widget-placeholder": "desarrollo",
     "last_opened_file_path": "C:/Users/Usuario/Downloads/VoleyballSystem"
   }
 }]]></component>
