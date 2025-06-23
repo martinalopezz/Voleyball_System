@@ -1,6 +1,7 @@
 package Modelo;
+import java.io.Serializable;
 
-public class Entrenador {
+public class Entrenador implements Serializable {
 
     private String nombre;
     private String apellido;

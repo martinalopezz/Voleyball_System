@@ -1,4 +1,4 @@
-package Archivo;
+package Recursos;
 
 import Modelo.Equipo;
 import java.io.*;

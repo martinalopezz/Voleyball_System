@@ -1,6 +1,7 @@
 package Modelo;
+import java.io.Serializable;
 
-public class Capitana {
+public class Capitana implements Serializable {
 
     private String nombre;
     private String apellido;

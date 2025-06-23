@@ -11,7 +11,7 @@ public class VistaGeneral {
     Scanner sc = new Scanner(System.in);
 
     public void mostrarMenu() {
-        System.out.println("----🏐 MENÚ 🏐----:" +
+        System.out.println("----🏐 MENÚ 🏐----" +
                 "\n🟢 1- Caracteristicas del sistema para el tipo de campeonato que se adapta." +
                 "\n🟢 2- Reglamento general del campeonato." +
                 "\n🟢 3- Seleccionar categoria del campeonato." +

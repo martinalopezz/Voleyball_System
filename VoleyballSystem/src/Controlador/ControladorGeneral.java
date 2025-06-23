@@ -5,7 +5,8 @@ import Modelo.Equipo;
 import Modelo.Cancha;
 import Modelo.Categoria;
 import Modelo.Partido;
-import Vista.VistaGeneral;
+import Recursos.ArchivoEquipo;
+import Recursos.ArchivoPartido;
 
 import Vista.VistaGeneral;
 
@@ -22,9 +23,9 @@ public class ControladorGeneral {
 
 
     public void instanciaObjetos() {
-        Cancha cancha1 = new Cancha("Cancha 1");
+        Cancha cancha1 = new Cancha("1");
         listaCancha.add(cancha1);
-        Cancha cancha2 = new Cancha("Cancha 2");
+        Cancha cancha2 = new Cancha("2");
         listaCancha.add(cancha2);
         Categoria categoria1 = new Categoria(1, "Sub14");
         listaCategoria.add(categoria1);
@@ -112,6 +113,10 @@ public class ControladorGeneral {
         listaEquipos.add(nuevoEquipo);
 
         vista.mostrarEquipo(nuevoEquipo);
+
+        ArchivoEquipo archivoEquipo = new ArchivoEquipo();
+        archivoEquipo.guardarEquipo(nuevoEquipo);
+
     }
 
     private void mostrarequipos() {
@@ -131,12 +136,12 @@ public class ControladorGeneral {
 
         vista.mostrarLista("Equipos disponibles:", listaEquipos);
         int idEquipo1 = vista.pedirEntero("ID del primer equipo:");
-        String nombreEquipo1 = vista.pedirString("Ingresa el nombre del equipo 1");
+        String nombreEquipo1 = vista.pedirString("el nombre del equipo 1:");
         int idEquipo2 = vista.pedirEntero("ID del segundo equipo:");
-        String nombreEquipo2 = vista.pedirString("Ingresa el nombre del equipo 2");
+        String nombreEquipo2 = vista.pedirString("el nombre del equipo 2:");
 
-        String nombreArbitro = vista.pedirString("Ingrese el nombre del árbitro:");
-        String apellidoArbitro = vista.pedirString("Ingrese el apellido del árbitro:");
+        String nombreArbitro = vista.pedirString("el nombre del árbitro:");
+        String apellidoArbitro = vista.pedirString("el apellido del árbitro:");
 
         Arbitro arbitro = new Arbitro(nombreArbitro, apellidoArbitro);
 
@@ -162,13 +167,24 @@ public class ControladorGeneral {
             return;
         }
 
-        String fecha = vista.pedirString("Ingrese la fecha del partido (AAAA-MM-DD)(ej: 2025-06-21):");
+        String fecha = vista.pedirString("la fecha del partido (AAAA-MM-DD)(ej: 2025-06-21):");
 
         Partido partido = new Partido(equipo1, equipo2, cancha, fecha, arbitro);
+
+        int setsEquipo1 = vista.pedirEntero("Ingrese los sets ganados por " + equipo1.getNombre() + ": ");
+        int setsEquipo2 = vista.pedirEntero("Ingrese los sets ganados por " + equipo2.getNombre() + ": ");
+
+        PuntosSet resultado = new PuntosSet(setsEquipo1, setsEquipo2);
+        partido.setPuntosSet(resultado);
+
         listaPartidos.add(partido);
 
-        vista.mostrarMensaje(" Partido registrado correctamente:");
+        vista.mostrarMensaje("✅ Partido registrado correctamente con resultado:");
         vista.mostrarPartido(partido);
+
+        ArchivoPartido archivoPartido = new ArchivoPartido();
+        archivoPartido.guardarPartido(partido);
+
 
     }
 
@@ -229,8 +245,12 @@ public class ControladorGeneral {
         vista = new VistaGeneral();
         listaCancha = new HashSet<>();
         listaCategoria = new HashSet<>();
-        listaEquipos = new HashSet<>();
-        listaPartidos = new HashSet<>();
+
+        ArchivoEquipo archivoEquipo = new ArchivoEquipo();
+        listaEquipos = new HashSet<>(archivoEquipo.obtenerEquipos());
+
+        ArchivoPartido archivoPartido = new ArchivoPartido();
+        listaPartidos = new HashSet<>(archivoPartido.obtenerPartidos());
     }
 
     private void mostrarTablaPosiciones() {

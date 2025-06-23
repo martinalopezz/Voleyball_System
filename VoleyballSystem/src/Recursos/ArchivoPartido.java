@@ -1,4 +1,4 @@
-package Archivo;
+package Recursos;
 
 import Modelo.Partido;
 import java.io.*;

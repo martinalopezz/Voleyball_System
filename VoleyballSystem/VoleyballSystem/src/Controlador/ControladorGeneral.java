@@ -5,7 +5,6 @@ import Modelo.Equipo;
 import Modelo.Cancha;
 import Modelo.Categoria;
 import Modelo.Partido;
-import Vista.VistaGeneral;
 import Archivo.ArchivoEquipo;
 import Archivo.ArchivoPartido;
 
