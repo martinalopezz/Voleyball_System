@@ -6,7 +6,6 @@ public class Partido {
     private Cancha cancha;
     private String fecha;
     private Arbitro arbitro;
-    private PuntosSet puntosSet;
 
 
     public Partido(Equipo equipo1, Equipo equipo2, Cancha cancha, String fecha, Arbitro arbitro) {
@@ -36,15 +35,6 @@ public class Partido {
                 "\n🏟️ Cancha: " + cancha.getNumeroCancha() +
                 "\n📆 Fecha: " + fecha +
                 "\n🧑 Árbitro: " + arbitro.getNombre() + " " + arbitro.getApellido();
-    }
-
-
-    public void setPuntosSet(PuntosSet resultado) {
-        this.puntosSet = resultado;
-    }
-
-    public PuntosSet getPuntosSet() {
-        return puntosSet;
     }
 }
 

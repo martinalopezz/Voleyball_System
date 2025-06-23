@@ -83,4 +83,6 @@ public class VistaGeneral {
         System.out.println(partido.toString());
     }
 
+
+
 }
