@@ -82,5 +82,4 @@ public class VistaGeneral {
     public void mostrarPartido(Partido partido) {
         System.out.println(partido.toString());
     }
-
 }
