@@ -5,7 +5,8 @@ import Modelo.Equipo;
 import Modelo.Cancha;
 import Modelo.Categoria;
 import Modelo.Partido;
-import Vista.VistaGeneral;
+import Recursos.ArchivoEquipo;
+import Recursos.ArchivoPartido;
 
 import Vista.VistaGeneral;
 
@@ -21,11 +22,10 @@ public class ControladorGeneral {
     private Set<Partido> listaPartidos;
 
 
-
     public void instanciaObjetos() {
-        Cancha cancha1 = new Cancha ("Cancha 1");
+        Cancha cancha1 = new Cancha("1");
         listaCancha.add(cancha1);
-        Cancha cancha2 = new Cancha ("Cancha 2");
+        Cancha cancha2 = new Cancha("2");
         listaCancha.add(cancha2);
         Categoria categoria1 = new Categoria(1, "Sub14");
         listaCategoria.add(categoria1);
@@ -62,12 +62,12 @@ public class ControladorGeneral {
                 case 6:
                     registrarPartido();
                     break;
-                /*case 7:
+                case 7:
                     resultadosPartidos();
                     break;
                 case 8:
                     mostrarTablaPosiciones();
-                    break;*/
+                    break;
                 case 0:
                     vista.mensajeError();
                     break;
@@ -75,6 +75,7 @@ public class ControladorGeneral {
             opc = vista.elegirOpcion();
         }
     }
+
 
     private void seleccionarCategoria() {
         vista.mostrarLista("🏐 Lista categorias: ", listaCategoria);
@@ -112,9 +113,13 @@ public class ControladorGeneral {
         listaEquipos.add(nuevoEquipo);
 
         vista.mostrarEquipo(nuevoEquipo);
+
+        ArchivoEquipo archivoEquipo = new ArchivoEquipo();
+        archivoEquipo.guardarEquipo(nuevoEquipo);
+
     }
 
-    private void mostrarequipos(){
+    private void mostrarequipos() {
         if (listaEquipos.isEmpty()) {
             vista.mostrarMensaje("No hay equipos registrados.");
         } else {
@@ -125,18 +130,18 @@ public class ControladorGeneral {
         }
     }
 
-    private void registrarPartido(){
+    private void registrarPartido() {
         vista.mostrarMensaje("📋 Registrar Partido");
 
 
         vista.mostrarLista("Equipos disponibles:", listaEquipos);
         int idEquipo1 = vista.pedirEntero("ID del primer equipo:");
-        String nombreEquipo1 = vista.pedirString("Ingresa el nombre del equipo 1");
+        String nombreEquipo1 = vista.pedirString("el nombre del equipo 1:");
         int idEquipo2 = vista.pedirEntero("ID del segundo equipo:");
-        String nombreEquipo2 = vista.pedirString("Ingresa el nombre del equipo 2");
+        String nombreEquipo2 = vista.pedirString("el nombre del equipo 2:");
 
-        String nombreArbitro = vista.pedirString("Ingrese el nombre del árbitro:");
-        String apellidoArbitro = vista.pedirString("Ingrese el apellido del árbitro:");
+        String nombreArbitro = vista.pedirString("el nombre del árbitro:");
+        String apellidoArbitro = vista.pedirString("el apellido del árbitro:");
 
         Arbitro arbitro = new Arbitro(nombreArbitro, apellidoArbitro);
 
@@ -157,18 +162,29 @@ public class ControladorGeneral {
         String numeroCancha = vista.pedirString("Numero de la Cancha: ");
         Cancha cancha = buscarCanchaPorNumero(numeroCancha);
 
-        if (cancha == null){
+        if (cancha == null) {
             vista.mostrarMensaje("No se puedo encontrar la cancha");
             return;
         }
 
-        String fecha = vista.pedirString("Ingrese la fecha del partido (AAAA-MM-DD)(ej: 2025-06-21):");
+        String fecha = vista.pedirString("la fecha del partido (AAAA-MM-DD)(ej: 2025-06-21):");
 
         Partido partido = new Partido(equipo1, equipo2, cancha, fecha, arbitro);
+
+        int setsEquipo1 = vista.pedirEntero("Ingrese los sets ganados por " + equipo1.getNombre() + ": ");
+        int setsEquipo2 = vista.pedirEntero("Ingrese los sets ganados por " + equipo2.getNombre() + ": ");
+
+        PuntosSet resultado = new PuntosSet(setsEquipo1, setsEquipo2);
+        partido.setPuntosSet(resultado);
+
         listaPartidos.add(partido);
 
-        vista.mostrarMensaje(" Partido registrado correctamente:");
+        vista.mostrarMensaje("✅ Partido registrado correctamente con resultado:");
         vista.mostrarPartido(partido);
+
+        ArchivoPartido archivoPartido = new ArchivoPartido();
+        archivoPartido.guardarPartido(partido);
+
 
     }
 
@@ -190,15 +206,96 @@ public class ControladorGeneral {
         return null;
     }
 
+    private void resultadosPartidos() {
+        vista.mostrarMensaje("📋 Ingresar resultados de partidos");
 
+        if (listaPartidos.isEmpty()) {
+            vista.mostrarMensaje("No hay partidos registrados.");
+            return;
+        }
 
+        vista.mostrarLista("Lista de partidos:", listaPartidos);
+        String fecha = vista.pedirString("la fecha del partido que desea cargar resultado (AAAA-MM-DD):");
+
+        Partido partidoEncontrado = null;
+
+        for (Partido partido : listaPartidos) {
+            if (partido.getFecha().equals(fecha)) {
+                partidoEncontrado = partido;
+                break;
+            }
+        }
+
+        if (partidoEncontrado == null) {
+            vista.mostrarMensaje("No se encontró un partido con esa fecha.");
+            return;
+        }
+
+        int sets1 = vista.pedirEntero("la cantidad de sets ganados por " + partidoEncontrado.getEquipo1().getNombre());
+        int sets2 = vista.pedirEntero("la cantidad de sets ganados por " + partidoEncontrado.getEquipo2().getNombre());
+
+        PuntosSet resultado = new PuntosSet(sets1, sets2);
+        partidoEncontrado.setPuntosSet(resultado);
+
+        vista.mostrarMensaje("✅ Resultado cargado correctamente.");
+        vista.mostrarPartido(partidoEncontrado);
+    }
 
     public ControladorGeneral() {
         vista = new VistaGeneral();
         listaCancha = new HashSet<>();
         listaCategoria = new HashSet<>();
-        listaEquipos = new HashSet<>();
-        listaPartidos = new HashSet<>();
+
+        ArchivoEquipo archivoEquipo = new ArchivoEquipo();
+        listaEquipos = new HashSet<>(archivoEquipo.obtenerEquipos());
+
+        ArchivoPartido archivoPartido = new ArchivoPartido();
+        listaPartidos = new HashSet<>(archivoPartido.obtenerPartidos());
     }
 
+    private void mostrarTablaPosiciones() {
+
+        vista.mostrarMensaje("📊 Tabla de posiciones");
+
+        if (listaEquipos.isEmpty()) {
+            vista.mostrarMensaje("No hay equipos registrados.");
+            return;
+        }
+
+        for (Equipo equipo : listaEquipos) {
+            int jugados = 0;
+            int ganados = 0;
+            int perdidos = 0;
+            int puntos = 0;
+
+            for (Partido partido : listaPartidos) {
+                if (partido.getPuntosSet() == null) {
+                    continue;
+                }
+
+                if (partido.getEquipo1().equals(equipo)) {
+                    jugados++;
+                    if (partido.getPuntosSet().getSetsEquipo1() > partido.getPuntosSet().getSetsEquipo2()) {
+                        ganados++;
+                        puntos += 2;
+                    } else {
+                        perdidos++;
+                    }
+                } else if (partido.getEquipo2().equals(equipo)) {
+                    jugados++;
+                    if (partido.getPuntosSet().getSetsEquipo2() > partido.getPuntosSet().getSetsEquipo1()) {
+                        ganados++;
+                        puntos += 2;
+                    } else {
+                        perdidos++;
+                    }
+                }
+            }
+
+            System.out.println("Equipo: " + equipo.getNombre());
+            System.out.println("Partidos Jugados: " + jugados + " | Partidos Ganados: " + ganados + " " +
+                    "| Partidos Perdidos: " + perdidos + " | Puntos: " + puntos);
+            System.out.println("--------------------------------------------------");
+        }
+    }
 }

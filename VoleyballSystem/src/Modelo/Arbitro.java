@@ -1,6 +1,7 @@
 package Modelo;
+import java.io.Serializable;
 
-public class Arbitro {
+public class Arbitro implements Serializable {
     private int id_arbitro;
     private String nombre;
     private String apellido;

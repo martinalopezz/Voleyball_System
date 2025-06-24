@@ -1,11 +1,13 @@
 package Modelo;
+import java.io.Serializable;
 
-public class Partido {
+public class Partido implements Serializable {
     private Equipo equipo1;
     private Equipo equipo2;
     private Cancha cancha;
     private String fecha;
     private Arbitro arbitro;
+    private PuntosSet puntosSet;
 
 
     public Partido(Equipo equipo1, Equipo equipo2, Cancha cancha, String fecha, Arbitro arbitro) {
@@ -35,6 +37,15 @@ public class Partido {
                 "\n🏟️ Cancha: " + cancha.getNumeroCancha() +
                 "\n📆 Fecha: " + fecha +
                 "\n🧑 Árbitro: " + arbitro.getNombre() + " " + arbitro.getApellido();
+    }
+
+
+    public void setPuntosSet(PuntosSet resultado) {
+        this.puntosSet = resultado;
+    }
+
+    public PuntosSet getPuntosSet() {
+        return puntosSet;
     }
 }
 

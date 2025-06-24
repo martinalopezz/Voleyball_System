@@ -1,6 +1,7 @@
 package Modelo;
+import java.io.Serializable;
 
-public class Cancha {
+public class Cancha implements Serializable {
     private String numeroCancha;
 
     public Cancha() {
