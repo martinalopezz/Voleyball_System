@@ -1,6 +1,7 @@
 package Modelo;
+import java.io.Serializable;
 
-public class PuntosSet {
+public class PuntosSet implements Serializable{
     private int setsPorPartido = 4;
     private int SetTieBreak = 1;
     private int puntosPorSet = 25;

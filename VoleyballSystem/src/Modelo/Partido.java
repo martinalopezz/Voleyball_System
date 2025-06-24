@@ -1,6 +1,7 @@
 package Modelo;
+import java.io.Serializable;
 
-public class Partido {
+public class Partido implements Serializable {
     private Equipo equipo1;
     private Equipo equipo2;
     private Cancha cancha;
